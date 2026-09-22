@@ -4,13 +4,13 @@
 /* Color Palette & Global Reset */
 :root {
   --primary-color: #2563eb;       /* Vibrant Blue */
-  --primary-hover: #1d4ed8;      /* Darker Blue for buttons */
-  --bg-color: hsl(347, 87%, 42%);           /* Light soft grey/blue background */
+  --primary-hover: #1d4ed8;       /* Darker Blue for buttons */
+  --bg-color: #f8fafc;            /* Soft neutral background (replaces deep crimson) */
   --card-bg: #ffffff;            /* White for content cards */
   --text-main: #1e293b;          /* Dark slate for main text */
   --text-muted: #64748b;         /* Muted grey for labels/subtext */
   --border-color: #e2e8f0;       /* Light border line */
-  --table-alt: hsl(210, 89%, 47%);          /* Alternating row color */
+  --table-alt: #f8fafc;          /* Light neutral alternating row & header color */
 }
 
 * {
@@ -26,6 +26,7 @@ body {
   line-height: 1.5;
   padding: 40px 20px;
 }
+
 /* Main Page Container */
 .container {
   max-width: 800px;
@@ -54,7 +55,7 @@ form, .expense-form-card {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
-/* Expenses-section*/
+/* Expenses Section */
 .expenses-section {
   background-color: var(--card-bg);
   padding: 24px;
@@ -63,6 +64,7 @@ form, .expense-form-card {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   overflow-x: auto;
 }
+
 h1, h2, h3, .heading-text {
   font-family: 'Poppins', sans-serif;
   color: var(--text-main);
@@ -70,7 +72,7 @@ h1, h2, h3, .heading-text {
   margin-bottom: 12px;
 }
 
-label, p, span, input, button {
+label, p, span, input {
   font-family: 'Inter', sans-serif;
   color: var(--text-main);
 }
@@ -82,6 +84,7 @@ label {
   color: var(--text-muted);
   margin-bottom: 6px;
 }
+
 input[type="text"],
 input[type="number"],
 input[type="date"],
@@ -92,8 +95,8 @@ select {
   border: 1px solid var(--border-color);
   border-radius: 8px;
   font-size: 0.95rem;
-  background-color: #ffffff; /* Replace line 95 (the green hsl value) with white */
-  color: #1a1a1a;          /* Add this line for dark, readable text */
+  background-color: #ffffff;
+  color: #1a1a1a;
   transition: border-color 0.2s;
 }
 
@@ -104,8 +107,9 @@ input:focus, select:focus {
 }
 
 button, input[type="submit"] {
+  font-family: 'Inter', sans-serif;
   background-color: var(--primary-color);
-  color: rgb(184, 15, 15);
+  color: #ffffff; /* High contrast white text */
   font-weight: 600;
   padding: 10px 20px;
   border: none;
@@ -118,6 +122,7 @@ button, input[type="submit"] {
 button:hover, input[type="submit"]:hover {
   background-color: var(--primary-hover);
 }
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -146,6 +151,7 @@ tbody tr:nth-child(even) {
   background-color: var(--table-alt);
 }
 
+/* Soft gray hover state (replaces bright green) */
 tbody tr:hover {
-  background-color: #1a8006;
+  background-color: #f1f5f9;
 }
