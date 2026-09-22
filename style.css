@@ -1,18 +1,49 @@
-/* Import Google Fonts (Poppins for headings, Inter for body text) */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap');
-
-/* Color Palette & Global Reset */
+/* ==========================================
+   Theme Definition (CSS Custom Properties)
+   ========================================== */
 :root {
-  --primary-color: #2563eb;       /* Vibrant Blue */
-  --primary-hover: #1d4ed8;       /* Darker Blue for buttons */
-  --bg-color: #f8fafc;            /* Soft neutral background (replaces deep crimson) */
-  --card-bg: #ffffff;            /* White for content cards */
-  --text-main: #1e293b;          /* Dark slate for main text */
-  --text-muted: #64748b;         /* Muted grey for labels/subtext */
-  --border-color: #e2e8f0;       /* Light border line */
-  --table-alt: #f8fafc;          /* Light neutral alternating row & header color */
+  /* Brand Palette */
+  --brand-color: #2563eb;
+  --brand-hover: #1d4ed8;
+  --accent-color: #10b981;
+  
+  /* Light Theme Surface & Text */
+  --bg-main: #f8fafc;
+  --bg-surface: #ffffff;
+  --border-color: #e2e8f0;
+  
+  --text-primary: #0f172a;
+  --text-secondary: #64748b;
+  
+  /* Elevation & Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
 }
 
+/* ==========================================
+   Dark Theme Overrides
+   ========================================== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --brand-color: #3b82f6;
+    --brand-hover: #60a5fa;
+    --accent-color: #34d399;
+    
+    --bg-main: #0f172a;
+    --bg-surface: #1e293b;
+    --border-color: #334155;
+    
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+    --shadow-hover: 0 10px 20px -3px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* Reset & Base Styles */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -20,138 +51,227 @@
 }
 
 body {
-  background-color: var(--bg-color);
-  color: var(--text-main);
-  font-family: 'Inter', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
   line-height: 1.5;
-  padding: 40px 20px;
 }
 
-/* Main Page Container */
-.container {
-  max-width: 800px;
-  margin: 0 auto;
+/* ==========================================
+   Layout Architecture (CSS Grid)
+   ========================================== */
+.dashboard-container {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  grid-template-rows: 64px 1fr;
+  grid-template-areas:
+    "header  header"
+    "sidebar main";
+  min-height: 100vh;
 }
 
-/* Page Heading Card */
-header, .page-heading {
-  background-color: var(--card-bg);
-  color: var(--text-main);
-  padding: 24px;
-  margin-bottom: 24px;
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-  text-align: center;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+/* ==========================================
+   Flexbox Internal Components
+   ========================================== */
+
+/* Header Components */
+.header {
+  grid-area: header;
+  background-color: var(--bg-surface);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1.5rem;
+  z-index: 10;
 }
 
-/* Add Expense Form Card */
-form, .expense-form-card {
-  background-color: var(--card-bg);
-  padding: 24px;
-  margin-bottom: 24px;
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-}
-
-/* Expenses Section */
-.expenses-section {
-  background-color: var(--card-bg);
-  padding: 24px;
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  overflow-x: auto;
-}
-
-h1, h2, h3, .heading-text {
-  font-family: 'Poppins', sans-serif;
-  color: var(--text-main);
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
   font-weight: 700;
-  margin-bottom: 12px;
+  font-size: 1.25rem;
+  color: var(--brand-color);
 }
 
-label, p, span, input {
-  font-family: 'Inter', sans-serif;
-  color: var(--text-main);
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
-label {
-  display: block;
+.user-name {
   font-weight: 500;
   font-size: 0.875rem;
-  color: var(--text-muted);
-  margin-bottom: 6px;
+  color: var(--text-primary);
 }
 
-input[type="text"],
-input[type="number"],
-input[type="date"],
-select {
-  width: 100%;
-  padding: 10px 14px;
-  margin-bottom: 16px;
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--brand-color);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+/* Sidebar Components */
+.sidebar {
+  grid-area: sidebar;
+  background-color: var(--bg-surface);
+  border-right: 1px solid var(--border-color);
+  padding: 1.5rem 1rem;
+}
+
+.nav-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-weight: 500;
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+.nav-item:hover, 
+.nav-item.active {
+  background-color: var(--bg-main);
+  color: var(--brand-color);
+}
+
+/* Main Content Area */
+.main-content {
+  grid-area: main;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.content-header .subtitle {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+/* Category Cards Grid with dynamic viewport fluid minmax */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background-color: var(--bg-surface);
   border: 1px solid var(--border-color);
-  border-radius: 8px;
-  font-size: 0.95rem;
-  background-color: #ffffff;
-  color: #1a1a1a;
-  transition: border-color 0.2s;
-}
-
-input:focus, select:focus {
+  border-radius: 12px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  box-shadow: var(--shadow-sm);
   outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  
+  /* Micro-interaction setup (< 250ms requirement) */
+  transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1), 
+              box-shadow 200ms cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 200ms ease;
 }
 
-button, input[type="submit"] {
-  font-family: 'Inter', sans-serif;
-  background-color: var(--primary-color);
-  color: #ffffff; /* High contrast white text */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-title {
   font-weight: 600;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 0.95rem;
-  transition: background-color 0.2s;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
 }
 
-button:hover, input[type="submit"]:hover {
-  background-color: var(--primary-hover);
+.category-icon {
+  font-size: 1.25rem;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: left;
-  margin-top: 8px;
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
-th, td {
-  padding: 12px 16px;
-  font-size: 0.925rem;
-  border-bottom: 1px solid var(--border-color);
+.amount {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
 }
 
-th {
-  background-color: var(--table-alt);
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  color: var(--text-main);
-  text-transform: uppercase;
+.budget-limit {
   font-size: 0.75rem;
-  letter-spacing: 0.05em;
+  color: var(--text-secondary);
 }
 
-/* Alternating Row Colors */
-tbody tr:nth-child(even) {
-  background-color: var(--table-alt);
+/* ==========================================
+   Card Micro-interactions (Hover & Focus)
+   ========================================== */
+.card:hover, 
+.card:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--brand-color);
 }
 
-/* Soft gray hover state (replaces bright green) */
-tbody tr:hover {
-  background-color: #f1f5f9;
+/* Accessibility: Respect system motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .nav-item {
+    transition: none;
+  }
+}
+
+/* ==========================================
+   Responsiveness (Mobile Layout <= 768px)
+   ========================================== */
+@media (max-width: 768px) {
+  .dashboard-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas:
+      "header"
+      "sidebar"
+      "main";
+  }
+
+  .sidebar {
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+    padding: 0.5rem 1rem;
+  }
+
+  .nav-menu {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .nav-item {
+    padding: 0.5rem;
+    font-size: 0.875rem;
+  }
+
+  .main-content {
+    padding: 1rem;
+  }
 }

@@ -1,15 +1,33 @@
-# Budget Tracker Web Application
+# SpendWise Dashboard Shell
 
-A polished, user-friendly personal budget tracker web application designed to help manage daily expenses and keep track of finances with a clean, modern interface.
+A responsive, accessible dashboard layout built with modern CSS layout techniques (CSS Grid and Flexbox), CSS custom properties (variables), and micro-interactions. This project serves as the visual shell for the SpendWise capstone project.
 
-## Project Overview
-This project focuses on enhancing the visual design of an existing expense tracker using pure CSS. It transforms a basic web page into an organized application featuring distinct visual sections, custom Google Fonts, and a cohesive professional color palette without modifying the underlying HTML structure or backend functionality.
+---
 
-## Features & Design Implementation
-* **Cohesive Color Palette**: Utilizes a professional, intentional color scheme featuring vibrant blue primary actions, soft background tones, and clear border contrasts.
-* **Custom Typography**: Implements Google Fonts pairing (`Poppins` for prominent headings and `Inter` for clean body text and form labels) to establish a strong visual hierarchy.
-* **Structured Box Model Cards**: Organizes major sections—including the page header, the Add Expense form, and the Expense Table—into distinct visual "cards" using deliberate margins, padding, and rounded borders.
-* **Polished Tables & Forms**: Styled with clean input focus states, structured table cells, clear headers, and alternating row colors for enhanced readability.
+## 💡 Features
+
+- **CSS Grid & Flexbox Layout**: Pure CSS grid architecture for overall page layout with flexbox alignment internally for header, sidebar, and cards. No absolute positioning used for layout.
+- **Dynamic Theming**: Fully integrated design token architecture using CSS Custom Properties (`:root`).
+- **Dark Mode Support (Stretch Goal)**: Automatic color palette adjustment using `@media (prefers-color-scheme: dark)`.
+- **Micro-Interactions**: Smooth 200ms transform and elevation effects triggered on hover and keyboard navigation focus states.
+- **Responsive Architecture**: Adapts seamlessly from multi-column desktop displays down to single-column mobile viewports (`<= 768px`).
+- **Accessibility**: Includes keyboard navigation support using `tabindex` and `:focus-visible` states.
+
+---
+
+## 🛠️ Built With
+
+- **HTML5** (Semantic structure)
+- **CSS3** (CSS Grid, Flexbox, Custom Properties, Media Queries)
+
+---
+
+## 📁 Project Structure
+
+```text
+├── index.html     # Main dashboard HTML structure
+├── styles.css     # CSS grid, flexbox layout, theme tokens, and animations
+└── README.md      # Project documentation
 
 ## Technologies Used
 * **HTML5**: Structural markup for form controls and tables.

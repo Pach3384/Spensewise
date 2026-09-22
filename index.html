@@ -1,116 +1,133 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Personal Budget Tracker</title>
-  <link rel="stylesheet" href="style.css">
+  <title>SpendWise Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div class="dashboard-container">
+    
+    <!-- Header -->
+    <header class="header">
+      <div class="brand-logo">
+        <span class="logo-icon" aria-hidden="true">📊</span>
+        <span class="brand-name">SpendWise</span>
+      </div>
+      <div class="user-profile">
+        <span class="user-name">Alex Johnson</span>
+        <div class="avatar" aria-label="Alex Johnson profile">AJ</div>
+      </div>
+    </header>
 
-  <header>
-    <h1>
-      <!-- Requirement 3: <img> tag with proper src, alt, and width attributes -->
-      <img src="https://cdn-icons-png.flaticon.com/512/2845/2845874.png" alt="Budget Tracker Logo" width="40">
-      Personal Budget Tracker
-    </h1>
-  </header>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" aria-label="Sidebar Navigation">
+      <nav class="nav-menu">
+        <a href="#" class="nav-item active">
+          <span class="nav-icon" aria-hidden="true">🏠</span>
+          <span class="nav-text">Dashboard</span>
+        </a>
+        <a href="#" class="nav-item">
+          <span class="nav-icon" aria-hidden="true">💳</span>
+          <span class="nav-text">Transactions</span>
+        </a>
+        <a href="#" class="nav-item">
+          <span class="nav-icon" aria-hidden="true">📈</span>
+          <span class="nav-text">Analytics</span>
+        </a>
+        <a href="#" class="nav-item">
+          <span class="nav-icon" aria-hidden="true">⚙️</span>
+          <span class="nav-text">Settings</span>
+        </a>
+      </nav>
+    </aside>
 
-  <main>
-    <!-- Requirement 4: <details> and <summary> interactive collapsible element -->
-    <details class="instructions">
-      <summary>How to use this tracker</summary>
-      <p>Use the form below to enter your daily expenses. Select a category, add the amount, and keep track of your spending habits over time.</p>
-    </details>
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="content-header">
+        <h1>Monthly Expenses</h1>
+        <p class="subtitle">September 2026 Overview</p>
+      </div>
 
-    <!-- Requirement 2: Upgrade the Add Expense Form -->
-    <section class="add-expense-section">
-      <h2>Add New Expense</h2>
-      <form id="expense-form">
-        <label for="expense-name">Expense Name:</label>
-        <input type="text" id="expense-name" name="expense-name" placeholder="e.g., Groceries">
+      <!-- Financial Category Cards Grid -->
+      <section class="card-grid" aria-label="Category Expenses">
+        
+        <!-- Food Card -->
+        <article class="card" tabindex="0" aria-label="Food and Dining: spent $450.00 of $600.00 budget">
+          <div class="card-header">
+            <h2 class="card-title">Food & Dining</h2>
+            <span class="category-icon" aria-hidden="true">🍔</span>
+          </div>
+          <div class="card-body">
+            <span class="amount">$450.00</span>
+            <span class="budget-limit">of $600.00 budget</span>
+          </div>
+        </article>
 
-        <label for="expense-amount">Amount ($):</label>
-        <input type="number" id="expense-amount" name="expense-amount" placeholder="0.00">
+        <!-- Transport Card -->
+        <article class="card" tabindex="0" aria-label="Transport: spent $180.50 of $250.00 budget">
+          <div class="card-header">
+            <h2 class="card-title">Transport</h2>
+            <span class="category-icon" aria-hidden="true">🚗</span>
+          </div>
+          <div class="card-body">
+            <span class="amount">$180.50</span>
+            <span class="budget-limit">of $250.00 budget</span>
+          </div>
+        </article>
 
-        <!-- Requirement 2: <select> dropdown with at least 5 options -->
-        <label for="expense-category">Category:</label>
-        <select id="expense-category" name="expense-category">
-          <option value="Food">Food</option>
-          <option value="Transport">Transport</option>
-          <option value="Rent">Rent</option>
-          <option value="Entertainment">Entertainment</option>
-          <option value="Other">Other</option>
-        </select>
+        <!-- Rent Card -->
+        <article class="card" tabindex="0" aria-label="Rent and Housing: spent $1,400.00 of $1,400.00 budget">
+          <div class="card-header">
+            <h2 class="card-title">Rent & Housing</h2>
+            <span class="category-icon" aria-hidden="true">🏠</span>
+          </div>
+          <div class="card-body">
+            <span class="amount">$1,400.00</span>
+            <span class="budget-limit">of $1,400.00 budget</span>
+          </div>
+        </article>
 
-        <label for="expense-date">Date:</label>
-        <input type="date" id="expense-date" name="expense-date">
+        <!-- Entertainment Card -->
+        <article class="card" tabindex="0" aria-label="Entertainment: spent $120.00 of $150.00 budget">
+          <div class="card-header">
+            <h2 class="card-title">Entertainment</h2>
+            <span class="category-icon" aria-hidden="true">🎬</span>
+          </div>
+          <div class="card-body">
+            <span class="amount">$120.00</span>
+            <span class="budget-limit">of $150.00 budget</span>
+          </div>
+        </article>
 
-        <button type="button" id="add-btn">Add Expense</button>
-      </form>
-    </section>
+        <!-- Savings Card -->
+        <article class="card" tabindex="0" aria-label="Savings: saved $850.00 towards $1,000.00 goal">
+          <div class="card-header">
+            <h2 class="card-title">Savings</h2>
+            <span class="category-icon" aria-hidden="true">💰</span>
+          </div>
+          <div class="card-body">
+            <span class="amount">$850.00</span>
+            <span class="budget-limit">Goal: $1,000.00</span>
+          </div>
+        </article>
 
-    <!-- Requirement 1: Build the Expense Table -->
-    <section class="expenses-section">
-      <h2>Expense History</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Amount</th>
-            <th>Category</th>
-            <th>Date</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Weekly Groceries</td>
-            <td>$85.50</td>
-            <td>Food</td>
-            <td>2026-09-01</td>
-          </tr>
-          <tr>
-            <td>Bus Pass</td>
-            <td>$45.00</td>
-            <td>Transport</td>
-            <td>2026-09-02</td>
-          </tr>
-          <tr>
-            <td>Monthly Apartment Rent</td>
-            <td>$1,200.00</td>
-            <td>Rent</td>
-            <td>2026-09-03</td>
-          </tr>
-          <tr>
-            <td>Movie Tickets</td>
-            <td>$28.00</td>
-            <td>Entertainment</td>
-            <td>2026-09-05</td>
-          </tr>
-          <tr>
-            <td>Electricity Bill</td>
-            <td>$65.20</td>
-            <td>Other</td>
-            <td>2026-09-07</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
+        <!-- Utilities Card -->
+        <article class="card" tabindex="0" aria-label="Utilities: spent $215.30 of $230.00 budget">
+          <div class="card-header">
+            <h2 class="card-title">Utilities</h2>
+            <span class="category-icon" aria-hidden="true">⚡</span>
+          </div>
+          <div class="card-body">
+            <span class="amount">$215.30</span>
+            <span class="budget-limit">of $230.00 budget</span>
+          </div>
+        </article>
 
-    <!-- Requirement 3: Embedded YouTube video using <iframe> -->
-    <section class="media-section">
-      <h2>Budgeting Tips</h2>
-      <iframe 
-        width="560" 
-        height="315" 
-        src="https://www.youtube.com/embed/sVKQn2I4HDM" 
-        title="YouTube video player - Budgeting Tips" 
-        style="border: 0;"
-        allowfullscreen>
-      </iframe>
-    </section>
-  </main>
+      </section>
+    </main>
 
+  </div>
 </body>
 </html>
