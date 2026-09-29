@@ -1,41 +1,40 @@
-# SpendWise Dashboard Shell
+# SpendWise - Personal Budget Tracker
 
-A responsive, accessible dashboard layout built with modern CSS layout techniques (CSS Grid and Flexbox), CSS custom properties (variables), and micro-interactions. This project serves as the visual shell for the SpendWise capstone project.
+SpendWise is a dynamic web-based budget tracking application designed to help users manage their personal finances effectively by collecting income and expense data, performing automatic calculations, and outputting structured financial summaries.
 
----
+## JavaScript Concepts Implemented
 
-## 💡 Features
+- **Variables (`const`, `let`)**: Used to store user inputs, financial metrics, and calculated outcomes safely.
+- **Data Types & Type Conversion**: Handling string inputs from user prompts and converting them into floating-point numbers using `parseFloat()`.
+- **User Input Handling**: Interacting directly with the user via `prompt()` dialogs.
+- **Arithmetic Calculations**: Implementing mathematical operations to compute totals and remaining balances.
+- **Functions & Parameters**: Writing modular, reusable functions with parameter passing and returned values.
+- **Template Literals**: Utilizing ES6 backticks (``` `` ```) to format console output messages cleanly.
 
-- **CSS Grid & Flexbox Layout**: Pure CSS grid architecture for overall page layout with flexbox alignment internally for header, sidebar, and cards. No absolute positioning used for layout.
-- **Dynamic Theming**: Fully integrated design token architecture using CSS Custom Properties (`:root`).
-- **Dark Mode Support (Stretch Goal)**: Automatic color palette adjustment using `@media (prefers-color-scheme: dark)`.
-- **Micro-Interactions**: Smooth 200ms transform and elevation effects triggered on hover and keyboard navigation focus states.
-- **Responsive Architecture**: Adapts seamlessly from multi-column desktop displays down to single-column mobile viewports (`<= 768px`).
-- **Accessibility**: Includes keyboard navigation support using `tabindex` and `:focus-visible` states.
+## How Variables Are Used
 
----
+Variables store crucial state data throughout the application lifecycle:
+- **`userName`**: Holds the user's name for personalized reports.
+- **`monthlyBudget`**: Stores the user's starting budget cap.
+- **`rentExpense` & `utilitiesExpense`**: Hold individual expense values inputted by the user.
+- **`totalExpenses` & `remainingBalance`**: Store calculated totals returned by functions.
 
-## 🛠️ Built With
+## How User Input Is Collected
 
-- **HTML5** (Semantic structure)
-- **CSS3** (CSS Grid, Flexbox, Custom Properties, Media Queries)
+User inputs are collected dynamically using standard browser `prompt()` dialogs upon loading the webpage. Because values returned by `prompt()` are primitive `String` types, `parseFloat()` is applied to cast them into numeric values suitable for calculations.
 
----
+## How Calculations Are Performed
 
-## 📁 Project Structure
+Calculations are computed using modular JavaScript arithmetic:
+1. **Total Expenses Calculation**: `totalExpenses = expense1 + expense2`
+2. **Remaining Balance Calculation**: `remainingBalance = monthlyBudget - totalExpenses`
 
-```text
-├── index.html     # Main dashboard HTML structure
-├── styles.css     # CSS grid, flexbox layout, theme tokens, and animations
-└── README.md      # Project documentation
+Conditional logic (`if`/`else`) checks whether the remaining balance is positive, zero, or negative to display tailored feedback messages.
 
-## Technologies Used
-* **HTML5**: Structural markup for form controls and tables.
-* **CSS3**: Custom properties (CSS variables), Flexbox/Box Model layouts, and typography styling.
-* **Git & GitHub**: Version control and repository management.
+## How Functions Help Organize the Code
 
-## Setup & Usage
-1. Clone the repository to your local machine:
-   ```bash
-   git clone [https://github.com/Pach3384/your-repo-name.git](https://github.com/Pach3384/your-repo-name.git)lector definitions
-└── README.md    # Documentation file
+Functions keep the SpendWise codebase structured, readable, and maintainable according to the Single Responsibility Principle:
+- **`calculateTotalExpenses()`**: Dedicated strictly to adding up expenses.
+- **`calculateRemainingBalance()`**: Dedicated to computing net remaining funds.
+- **`displayBudgetSummary()`**: Manages logging structured, visually formatted summaries into the developer console.
+- **`runSpendWise()`**: Serves as the primary controller function orchestrating user prompts and app execution.

@@ -275,3 +275,14 @@ body {
     padding: 1rem;
   }
 }
+
+/* ==========================================
+   Assignment Verification Notice Style
+   ========================================== */
+code {
+  background-color: var(--border-color);
+  color: var(--brand-color);
+  padding: 0.15rem 0.35rem;
+  border-radius: 4px;
+  font-family: monospace;
+}
